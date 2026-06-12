@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココヤ。| 自然・アウトドア・旅</title>
     <style>
-        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 2; }
+        /* 基本設定 */
+        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 1.8; }
 
-        /* --- ヘッダー・ロゴ --- */
-        .site-header { position: fixed; top: 30px; left: 30px; z-index: 100; }
-        .logo-img { width: 120px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+        /* ヘッダー・ロゴ（独立配置） */
+        .site-header { position: fixed; top: 40px; left: 40px; z-index: 1000; }
+        .logo-img { width: 140px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
 
-        /* --- 没入型メインビジュアル --- */
+        /* メインビジュアル（パララックス演出） */
         .hero-parallax {
             height: 100vh;
             background-image: url('フィッツロイ.jpg');
@@ -24,42 +25,39 @@
             position: relative;
         }
         .hero-text {
-            color: white; font-size: 2rem; letter-spacing: 0.3em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            animation: fadeOut 2s ease-out forwards; animation-delay: 1.5s;
+            color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s;
         }
-        @keyframes fadeOut { to { opacity: 0; transform: translateY(-20px); } }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(-30px); } }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        /* コンテンツエリア */
+        .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px; }
+        .concept { text-align: center; margin-bottom: 120px; }
+        .concept h2 { font-size: 1.8rem; color: #3E4B24; margin-bottom: 30px; }
         
-        /* --- 3カラム横並びギャラリー --- */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 50px;
-        }
-        @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } }
-
-        .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
-        .gallery-item:hover { transform: translateY(-10px); }
-        .image-wrapper { width: 100%; height: 220px; overflow: hidden; border-radius: 2px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .item-title { font-size: 0.95rem; font-weight: 500; margin-top: 15px; letter-spacing: 0.05em; }
-
-        /* --- モダンYouTubeアイコン --- */
-        .yt-section { text-align: center; margin: 100px 0; }
+        /* YouTubeボタン（中央配置・モダンデザイン） */
+        .yt-section { text-align: center; margin: 80px 0; }
         .yt-btn {
-            display: inline-block; width: 140px; height: 50px;
-            border: 1px solid #2B2B2B;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; color: #2B2B2B; font-size: 0.8rem;
-            letter-spacing: 0.2em; transition: 0.4s;
+            display: inline-block; padding: 15px 40px;
+            border: 1px solid #2B2B2B; color: #2B2B2B;
+            text-decoration: none; font-size: 0.9rem; letter-spacing: 0.3em;
+            transition: all 0.4s ease;
         }
         .yt-btn:hover { background: #2B2B2B; color: #F8F7F0; }
 
-        footer { text-align: center; padding: 80px 20px; background-color: #3E4B24; color: #F8F7F0; }
-        .sns-link { color: #F8F7F0; margin: 0 15px; font-size: 0.8rem; opacity: 0.7; }
+        /* ギャラリー（3列横並び） */
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } }
+        .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
+        .gallery-item:hover { transform: translateY(-10px); }
+        .image-wrapper { width: 100%; height: 250px; overflow: hidden; background: #EBEA9E; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .item-title { font-size: 1rem; font-weight: 500; margin-top: 20px; }
+
+        /* フッター */
+        footer { text-align: center; padding: 100px 20px; background-color: #3E4B24; color: #F8F7F0; }
+        .sns-link { color: #F8F7F0; margin: 0 20px; font-size: 0.8rem; text-decoration: none; opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -73,13 +71,13 @@
     </div>
 
     <div class="container">
-        <div style="text-align: center; margin-bottom: 80px;">
-            <div style="font-size: 1.5rem; color: #3E4B24; margin-bottom: 20px;">かえるコヤ、つどうコヤ、ココヤ。</div>
-            <p style="max-width: 600px; margin: 0 auto;">阿蘇の美しい自然の中に佇む、手作りのAフレーム小屋「ココヤ。」。私たちは、壮大なロングトレイルへの旅や、自然と調和するシンプルな暮らしの魅力を発信しています。</p>
+        <div class="concept">
+            <h2>かえるコヤ、つどうコヤ、ココヤ。</h2>
+            <p style="max-width: 700px; margin: 0 auto;">阿蘇の美しい自然の中に佇む、手作りのAフレーム小屋「ココヤ。」。私たちは、壮大なロングトレイルへの旅や、自然と調和するシンプルな暮らしの魅力を発信しています。</p>
         </div>
 
         <div class="yt-section">
-            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-btn">YOUTUBE</a>
+            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-btn">YOUTUBE CHANNEL</a>
         </div>
 
         <div class="gallery">
