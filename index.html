@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココヤ。| 自然・アウトドア・旅</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 基本設定 */
         body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 1.8; -webkit-text-size-adjust: 100%; }
@@ -13,7 +13,7 @@
         .site-header { position: fixed; top: 40px; left: 40px; z-index: 1000; }
         .logo-img { width: 140px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
 
-        /* メインビジュアル（iPhone対策済み） */
+        /* メインビジュアル */
         .hero-parallax { height: 100vh; background-image: url('フィッツロイ.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; position: relative; }
         .hero-text { color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s; pointer-events: none; }
         @keyframes fadeOut { to { opacity: 0; transform: translateY(-30px); } }
@@ -30,6 +30,7 @@
         /* ギャラリー */
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 80px; }
         .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
+        .gallery-item:hover { transform: translateY(-10px); }
         .image-wrapper { width: 100%; height: 200px; overflow: hidden; background: #EBEA9E; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .item-title { font-size: 0.95rem; font-weight: 500; margin-top: 15px; }
@@ -41,11 +42,11 @@
         .sns-icons a:hover { color: #3E4B24; opacity: 1; transform: scale(1.1); }
         .copyright { font-size: 0.7rem; letter-spacing: 0.1em; opacity: 0.5; }
 
-        /* --- iPhone/モバイル対応（ここが重要） --- */
+        /* モバイル対応 */
         @media (max-width: 768px) {
             .site-header { top: 20px; left: 20px; }
             .logo-img { width: 100px; }
-            .hero-parallax { background-attachment: scroll; } /* Safariの崩れを防止 */
+            .hero-parallax { background-attachment: scroll; }
             .hero-text { font-size: 1.5rem; letter-spacing: 0.2em; }
             .container { padding: 60px 15px; }
             .gallery { grid-template-columns: 1fr; gap: 40px; }
