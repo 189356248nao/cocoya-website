@@ -5,161 +5,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココヤ。| 自然・アウトドア・旅</title>
     <style>
-        /* 全体の設定 */
+        /* 全体の設定：美しい明朝体と和紙のような余白 */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            color: #333333;
-            line-height: 1.8;
-            
-            /* CSSノイズで表現する自然な質感の背景 */
-            background-color: #F7F6EB; /* 質感に合わせたアースカラー */
-            background-image: radial-gradient(rgba(74, 93, 35, 0.04) 1px, transparent 0);
-            background-size: 4px 4px;
+            font-family: "Times New Roman", Georgia, "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            background-color: #F8F7F0;
+            color: #2B2B2B;
+            line-height: 2;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* ヘッダー・ロゴ部分 */
+        /* ヘッダー */
         header {
             text-align: center;
-            padding: 40px 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-bottom: 2px solid #EBEBDB;
-            backdrop-filter: blur(5px); /* 背景をうっすら透かすモダンな演出 */
+            padding: 80px 20px 60px;
         }
         .logo-img {
-            max-width: 250px;
+            max-width: 200px;
             height: auto;
+            opacity: 0.85;
         }
 
         /* メインコンテンツ */
         .container {
-            max-width: 900px;
+            max-width: 840px;
             margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
+            padding: 0 20px 100px;
         }
 
         /* コンセプトセクション */
         .concept-section {
-            margin-bottom: 60px;
-            padding: 30px 20px;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
+            margin-bottom: 100px;
+            text-align: center;
         }
         .concept-title {
-            font-size: 1.4rem;
-            color: #4A5D23; /* 森の緑色 */
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #3E4B24;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            margin-bottom: 30px;
         }
         .concept-text {
-            font-size: 1rem;
-            max-width: 600px;
+            font-size: 0.95rem;
+            max-width: 580px;
             margin: 0 auto;
             color: #555555;
+            text-align: justify;
+            letter-spacing: 0.05em;
         }
 
-        /* YouTubeへのリンクボタン */
+        .divider {
+            width: 40px;
+            height: 1px;
+            background-color: #D1CDBC;
+            margin: 80px auto;
+        }
+
+        /* YouTube案内 */
         .youtube-section {
-            margin-bottom: 60px;
-            background-color: #ffffff;
-            padding: 40px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            text-align: center;
+            margin-bottom: 100px;
         }
         .youtube-section h2 {
-            font-size: 1.3rem;
-            margin-top: 0;
-            color: #2c3e50;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #3E4B24;
+            margin-bottom: 15px;
         }
-        .youtube-btn {
+        .youtube-section p {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+        .youtube-channel-link {
             display: inline-block;
-            background-color: #CC0000;
-            color: white;
+            color: #AA2222;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: bold;
-            padding: 15px 40px;
-            border-radius: 30px;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 10px rgba(204, 0, 0, 0.2);
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid #AA2222;
+            padding-bottom: 4px;
+            /* リンクの文字をふわっと変化させる */
+            transition: opacity 0.4s ease;
         }
-        .youtube-btn:hover {
-            background-color: #ff0000;
-            transform: translateY(-2px);
+        .youtube-channel-link:hover {
+            opacity: 0.6;
         }
-        .youtube-btn span {
-            margin-right: 10px;
+        /* クリックした瞬間の沈み込み */
+        .youtube-channel-link:active {
+            transform: scale(0.98);
         }
 
-        /* 画像ギャラリー部分 */
+        /* ギャラリー */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            justify-content: center;
-            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
         }
+        
+        /* 【余韻演出】ギャラリーアイテム全体：触れたとき、離したときの滑らかな変化 */
         .gallery-item {
             display: block;
             text-decoration: none;
-            background: #ffffff;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: transform 0.3s, box-shadow 0.3s;
+            color: inherit;
+            /* プロのWebサイトで使われる自然な緩急（イージング）を適用 */
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
         }
         .gallery-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 20px rgba(74, 93, 35, 0.1);
+            opacity: 0.9;
+        }
+        /* クリックした瞬間に指先で押したように少しだけ縮む */
+        .gallery-item:active {
+            transform: scale(0.98);
+        }
+        
+        /* 映画のような横長比率の画像 */
+        .image-wrapper {
+            width: 100%;
+            height: 0;
+            padding-bottom: 45%;
+            position: relative;
+            overflow: hidden;
+            background-color: #EBEA9E;
         }
         .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            /* 写真のズームも0.6秒かけて優雅に */
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .gallery-item p {
-            margin: 15px 0 0;
-            font-weight: bold;
-            color: #4A5D23;
-        }
-
-        /* SNSリンク・フッター */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #4A5D23;
-            color: #ffffff;
-            margin-top: 60px;
-        }
-        .sns-container {
-            margin-bottom: 25px;
-        }
-        .sns-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 44px;
-            padding: 0 20px; /* 文字幅に合わせて自動で広がるように調整 */
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 22px; /* 横長の丸カプセル型に */
-            margin: 0 8px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .sns-link:hover {
-            background-color: rgba(255, 255, 255, 0.25);
+        /* 【余韻演出】マウスを乗せると静かに5%だけ拡大 */
+        .gallery-item:hover img {
             transform: scale(1.05);
         }
+
+        .item-meta {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .item-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1A1A1A;
+            margin: 0 0 10px 0;
+            letter-spacing: 0.05em;
+        }
+        .item-description {
+            font-size: 0.88rem;
+            color: #666666;
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #3E4B24;
+            color: #F8F7F0;
+        }
+        .sns-container {
+            margin-bottom: 35px;
+        }
+        .sns-link {
+            display: inline-block;
+            color: #F8F7F0;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            /* 文字と下線がじわっと浮き出る */
+            transition: opacity 0.4s ease, border-bottom 0.4s ease;
+        }
+        .sns-link:hover {
+            opacity: 1;
+            border-bottom: 1px solid #F8F7F0;
+        }
+        .sns-link:active {
+            transform: scale(0.96);
+        }
         .copyright {
-            font-size: 0.85rem;
-            opacity: 0.8;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -171,6 +209,7 @@
 
     <div class="container">
 
+        <!-- コンセプトセクション -->
         <div class="concept-section">
             <div class="concept-title">かえるコヤ、つどうコヤ。</div>
             <p class="concept-text">
@@ -179,37 +218,61 @@
             </p>
         </div>
 
+        <div class="divider"></div>
+
+        <!-- YouTube案内セクション -->
         <div class="youtube-section">
-            <h2>YouTubeで旅の様子をお届けしています</h2>
-            <p>小屋建築の全記録や、アメリカ・パタゴニアのロングトレイルの映像をYouTubeで公開中！</p>
-            <br>
-            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" rel="noopener noreferrer" class="youtube-btn">
-                <span>▶︎</span> YouTubeチャンネルを見る
+            <h2>Journal / YouTube</h2>
+            <p>小屋建築の全記録や、世界のロングトレイルを歩いた旅の記憶を映像で紡いでいます。</p>
+            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" rel="noopener noreferrer" class="youtube-channel-link">
+                YouTube Channel ──
             </a>
         </div>
 
+        <!-- マガジンスタイルの縦並びギャラリー -->
         <div class="gallery">
+            
+            <!-- 1つ目のストーリー：アメリカ縦断 -->
             <a href="https://www.youtube.com/watch?v=IcW8AVSCxs0&t=1s" target="_blank" rel="noopener noreferrer" class="gallery-item">
-                <img src="PCTロゴ.jpg" alt="PCTロゴ">
-                <p>アメリカ縦断4,265KMの旅</p>
+                <div class="image-wrapper">
+                    <img src="PCTロゴ.jpg" alt="PCTロゴ">
+                </div>
+                <div class="item-meta">
+                    <h3 class="item-title">アメリカ縦断 4,265km の旅</h3>
+                    <p class="item-description">『PCT2023』徒歩でアメリカを縦断する、最も美しい長距離自然歩道130日間の記録。千里の道も足下の一歩より始まる。</p>
+                </div>
             </a>
             
+            <!-- 2つ目のストーリー：南阿蘇 Aフレーム小屋作り -->
             <a href="https://www.youtube.com/watch?v=c-nClJFv5ww" target="_blank" rel="noopener noreferrer" class="gallery-item">
-                <img src="小屋建築.jpg" alt="手作りのAフレーム小屋">
-                <p>南阿蘇でAフレームの小屋作り</p>
+                <div class="image-wrapper">
+                    <img src="小屋建築.jpg" alt="手作りのAフレーム小屋">
+                </div>
+                <div class="item-meta">
+                    <h3 class="item-title">南阿蘇でAフレームの小屋作り</h3>
+                    <p class="item-description">【山小屋作り】Start to finish。阿蘇の麓で8日間、仲間と共に一から組み上げたA-Frame構造の小さな家。自然に溶け込む暮らしの原点。</p>
+                </div>
             </a>
             
+            <!-- 3つ目のストーリー：パタゴニアの壮大な旅路 -->
             <a href="https://www.youtube.com/watch?v=hJyhrh0phZw" target="_blank" rel="noopener noreferrer" class="gallery-item">
-                <img src="paine.jpg" alt="パタゴニアの風景">
-                <p>パタゴニアの壮大な旅路</p>
+                <div class="image-wrapper">
+                    <img src="paine.jpg" alt="パタゴニアの風景">
+                </div>
+                <div class="item-meta">
+                    <h3 class="item-title">パタゴニアの壮大な旅路</h3>
+                    <p class="item-description">Patagonia Fitz Roy 3 days hiking。風が吹き荒れる世界の果て、フィッツ・ロイを仰ぎ見る3日間のトレッキング。圧倒的な地球の鼓動を感じて。</p>
+                </div>
             </a>
+
         </div>
     </div>
 
+    <!-- フッター（SNSリンク連動） -->
     <footer>
         <div class="sns-container">
-            <a href="https://www.instagram.com/hiker_naoki/" target="_blank" rel="noopener noreferrer" class="sns-link" title="Instagram">Instagram</a>
-            <a href="https://www.threads.com/@hiker_naoki?hl=ja" target="_blank" rel="noopener noreferrer" class="sns-link" title="Threads">Threads</a>
+            <a href="https://www.instagram.com/hiker_naoki/" target="_blank" rel="noopener noreferrer" class="sns-link">Instagram</a>
+            <a href="https://www.threads.com/@hiker_naoki?hl=ja" target="_blank" rel="noopener noreferrer" class="sns-link">Threads</a>
         </div>
         <div class="copyright">
             &copy; 2026 ココヤ。 All Rights Reserved.
