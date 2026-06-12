@@ -7,46 +7,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 基本設定 */
-        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 1.8; }
+        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 1.8; -webkit-text-size-adjust: 100%; }
 
         /* ヘッダー・ロゴ */
         .site-header { position: fixed; top: 40px; left: 40px; z-index: 1000; }
         .logo-img { width: 140px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
 
-        /* メインビジュアル（パララックス） */
+        /* メインビジュアル（iPhone対策済み） */
         .hero-parallax { height: 100vh; background-image: url('フィッツロイ.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hero-text { color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s; }
+        .hero-text { color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s; pointer-events: none; }
         @keyframes fadeOut { to { opacity: 0; transform: translateY(-30px); } }
 
         /* コンテンツ */
-        .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px; }
-        .concept { text-align: center; margin-bottom: 80px; }
-        .concept h2 { font-size: 1.8rem; color: #3E4B24; margin-bottom: 30px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        .concept { text-align: center; margin-bottom: 60px; }
+        .concept h2 { font-size: 1.6rem; color: #3E4B24; margin-bottom: 20px; }
         
-        .yt-section { display: flex; justify-content: center; margin-bottom: 120px; }
+        .yt-section { display: flex; justify-content: center; margin-bottom: 80px; }
         .yt-btn { display: inline-block; padding: 15px 40px; border: 1px solid #2B2B2B; color: #2B2B2B; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.3em; transition: 0.4s; }
         .yt-btn:hover { background: #2B2B2B; color: #F8F7F0; }
 
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 120px; }
-        @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } }
+        /* ギャラリー */
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 80px; }
         .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
-        .gallery-item:hover { transform: translateY(-10px); }
-        .image-wrapper { width: 100%; height: 250px; overflow: hidden; background: #EBEA9E; }
+        .image-wrapper { width: 100%; height: 200px; overflow: hidden; background: #EBEA9E; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .item-title { font-size: 1rem; font-weight: 500; margin-top: 20px; }
+        .item-title { font-size: 0.95rem; font-weight: 500; margin-top: 15px; }
 
-        /* フッター（緑のベタ塗りを廃止・ミニマルデザイン） */
-        footer { 
-            text-align: center; 
-            padding: 80px 20px; 
-            color: #2B2B2B; 
-            background-color: transparent; /* ここを透過に変更 */
-            border-top: 1px solid #D1CDBC; /* 上部に細い線のみ */
+        /* フッター */
+        footer { text-align: center; padding: 60px 20px; color: #2B2B2B; background-color: #F8F7F0; border-top: 1px solid #D1CDBC; }
+        .sns-icons { margin-bottom: 20px; display: flex; justify-content: center; gap: 30px; }
+        .sns-icons a { font-size: 1.8rem; color: #2B2B2B; transition: 0.3s; opacity: 0.8; }
+        .sns-icons a:hover { color: #3E4B24; opacity: 1; transform: scale(1.1); }
+        .copyright { font-size: 0.7rem; letter-spacing: 0.1em; opacity: 0.5; }
+
+        /* --- iPhone/モバイル対応（ここが重要） --- */
+        @media (max-width: 768px) {
+            .site-header { top: 20px; left: 20px; }
+            .logo-img { width: 100px; }
+            .hero-parallax { background-attachment: scroll; } /* Safariの崩れを防止 */
+            .hero-text { font-size: 1.5rem; letter-spacing: 0.2em; }
+            .container { padding: 60px 15px; }
+            .gallery { grid-template-columns: 1fr; gap: 40px; }
+            .item-title { font-size: 1.1rem; }
+            .concept p { font-size: 0.95rem; line-height: 1.8; }
         }
-        .sns-icons { margin-bottom: 30px; display: flex; justify-content: center; gap: 30px; }
-        .sns-icons a { font-size: 1.8rem; color: #2B2B2B; transition: 0.3s; }
-        .sns-icons a:hover { color: #3E4B24; transform: scale(1.1); }
-        .copyright { font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -92,8 +97,8 @@
 
     <footer>
         <div class="sns-icons">
-            <a href="https://www.instagram.com/hiker_naoki/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.threads.com/@hiker_naoki?hl=ja" target="_blank"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://www.instagram.com/hiker_naoki/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.threads.com/@hiker_naoki?hl=ja" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
         </div>
         <div class="copyright">&copy; 2026 ココヤ。 All Rights Reserved.</div>
     </footer>
