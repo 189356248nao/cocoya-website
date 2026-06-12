@@ -5,135 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココヤ。| 自然・アウトドア・旅</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Times New Roman", Georgia, "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
-            background-color: #F8F7F0;
-            color: #2B2B2B;
-            line-height: 2;
-        }
+        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 2; }
 
-        /* --- パララックスメインビジュアル --- */
+        /* --- ヘッダー・ロゴ --- */
+        .site-header { position: fixed; top: 30px; left: 30px; z-index: 100; }
+        .logo-img { width: 120px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+
+        /* --- 没入型メインビジュアル --- */
         .hero-parallax {
-            height: 80vh; /* 画面の80%の高さ */
-            background-image: url('フィッツロイ.jpg'); /* ここに画像を設定 */
+            height: 100vh;
+            background-image: url('フィッツロイ.jpg');
             background-size: cover;
             background-position: center center;
-            background-attachment: fixed; /* これがパララックス効果を生む */
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
-        /* 写真の上に薄い膜を置いて文字やロゴを見やすくする */
-        .hero-parallax::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.2);
+        .hero-text {
+            color: white;
+            font-size: 2rem;
+            letter-spacing: 0.3em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            animation: fadeOut 2s ease-out forwards;
+            animation-delay: 1.5s;
         }
-        .hero-logo {
-            position: relative;
-            z-index: 1;
-            max-width: 250px;
-            filter: brightness(0) invert(1); /* ロゴを白抜きに */
-        }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(-20px); } }
 
-        .container {
-            max-width: 840px;
-            margin: 0 auto;
-            padding: 100px 20px;
+        .container { max-width: 840px; margin: 0 auto; padding: 100px 20px; }
+        .concept-section { margin-bottom: 100px; text-align: center; }
+        
+        /* --- YouTubeアイコン --- */
+        .yt-icon {
+            display: inline-block; width: 60px; height: 60px;
+            background: #AA2222; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .concept-section {
-            margin-bottom: 100px;
-            text-align: center;
-        }
-        .concept-title {
-            font-size: 1.5rem;
-            color: #3E4B24;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            margin-bottom: 30px;
-        }
-        .concept-text {
-            font-size: 0.95rem;
-            max-width: 580px;
-            margin: 0 auto;
-            color: #555555;
-            text-align: justify;
-            letter-spacing: 0.05em;
-        }
-
-        .divider { width: 40px; height: 1px; background-color: #D1CDBC; margin: 80px auto; }
-
-        .youtube-section { text-align: center; margin-bottom: 100px; }
-        .youtube-section h2 { font-size: 1.2rem; font-weight: 500; color: #3E4B24; margin-bottom: 15px; }
-        .youtube-channel-link {
-            display: inline-block; color: #AA2222; text-decoration: none; border-bottom: 1px solid #AA2222;
-            transition: opacity 0.4s ease;
-        }
-        .youtube-channel-link:hover { opacity: 0.6; }
+        .yt-icon:hover { transform: scale(1.1); }
+        .yt-icon::after { content: "▶"; color: white; font-size: 20px; margin-left: 3px; }
 
         .gallery { display: flex; flex-direction: column; gap: 80px; }
-        .gallery-item {
-            display: block; text-decoration: none; color: inherit;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-        }
-        .gallery-item:hover { opacity: 0.9; }
-        .gallery-item:active { transform: scale(0.98); }
+        .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.6s; }
+        .image-wrapper { width: 100%; height: 0; padding-bottom: 45%; position: relative; overflow: hidden; }
+        .gallery-item img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
         
-        .image-wrapper {
-            width: 100%; height: 0; padding-bottom: 45%; position: relative; overflow: hidden;
-        }
-        .gallery-item img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gallery-item:hover img { transform: scale(1.05); }
-
-        .item-title { font-size: 1.25rem; font-weight: 500; margin: 20px 0 10px 0; }
-        .item-description { font-size: 0.88rem; color: #666666; }
-
         footer { text-align: center; padding: 80px 20px; background-color: #3E4B24; color: #F8F7F0; }
-        .sns-link { color: #F8F7F0; text-decoration: none; margin: 0 18px; opacity: 0.7; transition: 0.4s; }
-        .sns-link:hover { opacity: 1; border-bottom: 1px solid #F8F7F0; }
+        .sns-link { color: #F8F7F0; margin: 0 15px; opacity: 0.7; }
     </style>
 </head>
 <body>
 
+    <header class="site-header">
+        <img src="ココヤロゴ.jpg" alt="ココヤ。" class="logo-img">
+    </header>
+
     <div class="hero-parallax">
-        <img src="ココヤロゴ.jpg" alt="ココヤ。" class="hero-logo">
+        <div class="hero-text">旅が人生を作る</div>
     </div>
 
     <div class="container">
         <div class="concept-section">
-            <div class="concept-title">かえるコヤ、つどうコヤ。</div>
-            <p class="concept-text">
-                阿蘇の美しい自然の中に佇む、手作りのAフレーム小屋「ココヤ。」。<br>
-                私たちは、壮大なロングトレイルへの旅や、自然と調和するシンプルな暮らしの魅力を、言葉と映像を通じて発信しています。
-            </p>
+            <div style="font-size: 1.5rem; color: #3E4B24; margin-bottom: 30px;">かえるコヤ、つどうコヤ、ココヤ。</div>
+            <p>阿蘇の美しい自然の中に佇む、手作りのAフレーム小屋「ココヤ。」。<br>私たちは、壮大なロングトレイルへの旅や、自然と調和するシンプルな暮らしの魅力を、言葉と映像を通じて発信しています。</p>
         </div>
 
-        <div class="divider"></div>
-
-        <div class="youtube-section">
-            <h2>Journal / YouTube</h2>
-            <p>小屋建築の全記録や、世界のロングトレイルを歩いた旅の記憶を映像で紡いでいます。</p>
-            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="youtube-channel-link">YouTube Channel ──</a>
+        <div style="text-align: center; margin-bottom: 100px;">
+            <p>Journal / YouTube</p>
+            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-icon"></a>
         </div>
 
         <div class="gallery">
             <a href="https://www.youtube.com/watch?v=IcW8AVSCxs0&t=1s" target="_blank" class="gallery-item">
-                <div class="image-wrapper"><img src="PCTロゴ.jpg" alt="PCTロゴ"></div>
+                <div class="image-wrapper"><img src="PCTロゴ.jpg" alt="PCT"></div>
                 <div class="item-title">アメリカ縦断 4,265km の旅</div>
-                <p class="item-description">千里の道も足下の一歩より始まる。</p>
             </a>
             <a href="https://www.youtube.com/watch?v=c-nClJFv5ww" target="_blank" class="gallery-item">
                 <div class="image-wrapper"><img src="小屋建築.jpg" alt="小屋"></div>
                 <div class="item-title">南阿蘇でAフレームの小屋作り</div>
-                <p class="item-description">自然に溶け込む暮らしの原点。</p>
             </a>
         </div>
     </div>
