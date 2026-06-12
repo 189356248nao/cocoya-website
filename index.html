@@ -17,20 +17,38 @@
             -webkit-text-size-adjust: 100%; 
         }
 
-        /* ヘッダー・ロゴ */
+        /* 【修正】ヘッダー・ロゴ・タイトルリンク */
         .site-header { 
-            position: fixed; 
+            position: absolute; /* absoluteに変更：スクロールで自然に上に流れるようにし、長いタイトルがコンテンツの邪魔をしないように最適化 */
             top: 30px; 
             left: 40px; 
             z-index: 1000; 
+        }
+        .header-link {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        .header-link:hover {
+            opacity: 0.8;
         }
         .logo-img { 
             width: 120px; 
             height: auto;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); 
         }
+        .header-title {
+            font-size: 0.95rem;
+            color: #FFFFFF; /* ヒーロー画像の上で美しく映える白 */
+            letter-spacing: 0.08em;
+            font-weight: 500;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
 
-        /* メインビジュアル（iPhoneバグを根本から防ぐ構造） */
+        /* メインビジュアル */
         .hero-container {
             position: relative;
             width: 100%;
@@ -43,7 +61,7 @@
             background-image: url('フィッツロイ.jpg'); 
             background-size: cover; 
             background-position: center center; 
-            background-attachment: scroll; /* スマホ・基本はscrollにしてバグを防ぐ */
+            background-attachment: scroll; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -54,6 +72,7 @@
             top:0; left:0; width:100%; height:100%;
             background: rgba(0, 0, 0, 0.25);
         }
+        /* 【修正】スクロールで消える対象のテキスト */
         .hero-text { 
             position: relative;
             color: #FFFFFF; 
@@ -61,12 +80,10 @@
             font-weight: 500;
             letter-spacing: 0.5em; 
             text-shadow: 0 4px 20px rgba(0,0,0,0.4); 
-            animation: fadeOut 2.5s ease-out forwards; 
-            animation-delay: 1.5s; 
             pointer-events: none; 
             padding-left: 0.5em; 
+            will-change: opacity; /* スクロール時の描写パフォーマンスを最適化 */
         }
-        @keyframes fadeOut { to { opacity: 0; transform: translateY(-20px); } }
 
         /* コンテンツ全体 */
         .container { max-width: 1200px; margin: 0 auto; padding: 140px 30px; }
@@ -183,48 +200,44 @@
         .sns-icons a:hover { color: #2E3B17; opacity: 1; transform: translateY(-3px); }
         .copyright { font-size: 0.75rem; letter-spacing: 0.15em; opacity: 0.6; font-family: sans-serif; }
 
-        /* ────────────────────────────────────────────────────────
-           デスクトップ環境（PC）のみにパララックスを適用
-        ──────────────────────────────────────────────────────── */
+        /* デスクトップ環境（PC）のみにパララックスを適用 */
         @media (min-width: 769px) {
             .hero-parallax {
-                background-attachment: fixed; /* PCでのみ美しく固定 */
+                background-attachment: fixed; 
             }
         }
 
-        /* ────────────────────────────────────────────────────────
-           モバイル対応（iPhone最適化）
-        ──────────────────────────────────────────────────────── */
+        /* モバイル対応（iPhone最適化） */
         @media (max-width: 768px) {
+            /* 【修正】スマホでは要素を縦並びにして、狭い画面幅でも綺麗に収める */
             .site-header { top: 20px; left: 20px; }
+            .header-link { flex-direction: column; align-items: flex-start; gap: 6px; }
             .logo-img { width: 90px; }
+            .header-title { font-size: 0.75rem; letter-spacing: 0.05em; }
             
             .hero-text { font-size: 1.4rem; letter-spacing: 0.3em; }
             
             .container { padding: 60px 20px; }
             .concept { margin-bottom: 50px; }
             
-            /* 【劇的改善】iPhoneの画面幅に合わせて絶対に1行で美しく収める */
+            /* キャッチコピーを絶対に1行で美しく収める設定 */
             .concept h2 { 
-                font-size: 4.3vw;          /* 画面幅に完全に比例して自動縮小 */
-                letter-spacing: 0.04em;    /* 詰まりすぎず離れすぎない最適な間隔 */
-                white-space: nowrap;       /* 絶対に途中で改行させない */
+                font-size: 4.3vw;          
+                letter-spacing: 0.04em;    
+                white-space: nowrap;       
                 line-height: 1.2; 
                 margin-bottom: 20px;
             }
             
-            /* 画面の非常に小さな端末（iPhone SEなど）での微調整 */
             @media (max-width: 360px) {
                 .concept h2 { font-size: 14px; }
             }
             
-            /* コンセプト文章も中央揃えにして、1行の見出しと美しく連動させる */
             .concept p { 
                 font-size: 0.9rem; 
                 text-align: center; 
                 line-height: 1.7;
             }
-            /* スマホでは改行コード（br）を無視して流れるようにし、不自然な隙間を無くす */
             .concept p br { display: none; } 
             
             .yt-section { margin-bottom: 80px; }
@@ -239,7 +252,10 @@
 <body>
 
     <header class="site-header">
-        <img src="ココヤロゴ.png" alt="ココヤ。" class="logo-img">
+        <a href="#" class="header-link">
+            <img src="ココヤロゴ.png" alt="ココヤ。" class="logo-img">
+            <h1 class="header-title">ココヤ。| 旅と自然 | YouTube紹介HP</h1>
+        </a>
     </header>
 
     <div class="hero-container">
@@ -272,7 +288,7 @@
                 <div class="story-body">
                     <h3 class="item-title">アメリカ縦断 4,265km の旅</h3>
                     <p class="item-desc">
-                        メキシコ国境からカナダ国境まで、アメリカ西海岸を南北に貫く壮大なロングトレイル「PCT」。果てしなく続く砂漠、険しい岩峰、そして息をのむような美しい大自然を歩き通した、半年に及ぶ過酷で豊かな旅の記録です。
+                        メキシコ国境からカナダ国境まで、アメリカ西海岸を南北に貫く壮大なロングトレイル「PCT」。果てしなく続く砂漠、険しい岩峰、精度高く輝く美しい大自然を歩き通した、半年に及ぶ過酷で豊かな旅の記録です。
                     </p>
                 </div>
                 <div class="video-wrapper">
@@ -316,5 +332,17 @@
         </div>
         <div class="copyright">&copy; 2026 ココヤ。 All Rights Reserved.</div>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const heroText = document.querySelector('.hero-text');
+            if (heroText) {
+                const scrollPosition = window.scrollY;
+                // 300pxスクロールした時点で完全に文字をフェードアウトさせる（数値を変えれば速度が変わります）
+                const opacity = Math.max(0, 1 - scrollPosition / 300);
+                heroText.style.opacity = opacity;
+            }
+        });
+    </script>
 </body>
 </html>
