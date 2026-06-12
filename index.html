@@ -29,7 +29,7 @@
 
         /* メインコンテンツ */
         .container {
-            max-width: 800px;
+            max-width: 900px; /* ギャラリーが3枚並ぶので少し広く */
             margin: 0 auto;
             padding: 40px 20px;
             text-align: center;
@@ -58,23 +58,26 @@
             margin-right: 10px;
         }
 
-        /* 画像ギャラリー部分 */
+        /* 画像ギャラリー部分（3枚並ぶように調整） */
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 自動で列を作成 */
             gap: 20px;
             justify-content: center;
         }
         .gallery-item {
-            flex: 1 1 300px; /* スマホでは縦並び、PCでは横並び */
             background: #fff;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-3px); /* ホバー時に少し浮かす */
         }
         .gallery-item img {
             width: 100%;
-            height: 250px; /* 少し大きめに表示 */
+            height: 200px; /* 3枚並べるので少し高さを抑える */
             object-fit: cover;
             border-radius: 4px;
         }
@@ -114,12 +117,17 @@
         <div class="gallery">
             <div class="gallery-item">
                 <img src="PCTロゴ.jpg" alt="PCTロゴ">
-                <p>パシフィック・クレスト・トレイル</p>
+                <p>アメリカ縦断4,265KMの旅</p>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="小屋建築.jpg" alt="手作りのAフレーム小屋">
+                <p>南阿蘇でAフレームの小屋作り</p>
             </div>
             
             <div class="gallery-item">
                 <img src="paine.jpg" alt="パタゴニアの風景">
-                <p>パタゴニアの壮大な自然</p>
+                <p>パタゴニアの壮大な旅路</p>
             </div>
         </div>
     </div>
