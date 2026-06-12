@@ -35,30 +35,31 @@
         /* --- 3カラム横並びギャラリー --- */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3つ横並び */
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             margin-top: 50px;
         }
-        @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } } /* スマホは縦並び */
+        @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } }
 
         .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
         .gallery-item:hover { transform: translateY(-10px); }
-        .image-wrapper { width: 100%; height: 200px; overflow: hidden; border-radius: 4px; }
+        .image-wrapper { width: 100%; height: 220px; overflow: hidden; border-radius: 2px; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .item-title { font-size: 1rem; font-weight: bold; margin-top: 15px; }
+        .item-title { font-size: 0.95rem; font-weight: 500; margin-top: 15px; letter-spacing: 0.05em; }
 
-        /* --- YouTubeアイコン --- */
-        .yt-section { text-align: center; margin: 80px 0; }
-        .yt-icon {
-            display: inline-block; width: 70px; height: 70px;
-            background: #AA2222; border-radius: 50%;
+        /* --- モダンYouTubeアイコン --- */
+        .yt-section { text-align: center; margin: 100px 0; }
+        .yt-btn {
+            display: inline-block; width: 140px; height: 50px;
+            border: 1px solid #2B2B2B;
             display: flex; align-items: center; justify-content: center;
-            transition: 0.4s;
+            text-decoration: none; color: #2B2B2B; font-size: 0.8rem;
+            letter-spacing: 0.2em; transition: 0.4s;
         }
-        .yt-icon:hover { transform: scale(1.1); }
-        .yt-icon::after { content: "▶"; color: white; font-size: 24px; margin-left: 3px; }
+        .yt-btn:hover { background: #2B2B2B; color: #F8F7F0; }
 
         footer { text-align: center; padding: 80px 20px; background-color: #3E4B24; color: #F8F7F0; }
+        .sns-link { color: #F8F7F0; margin: 0 15px; font-size: 0.8rem; opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -74,12 +75,11 @@
     <div class="container">
         <div style="text-align: center; margin-bottom: 80px;">
             <div style="font-size: 1.5rem; color: #3E4B24; margin-bottom: 20px;">かえるコヤ、つどうコヤ、ココヤ。</div>
-            <p>阿蘇の美しい自然の中に佇む、手作りのAフレーム小屋「ココヤ。」。<br>私たちは、壮大なロングトレイルへの旅や、自然と調和するシンプルな暮らしの魅力を発信しています。</p>
+            <p style="max-width: 600px; margin: 0 auto;">阿蘇の美しい自然の中に佇む、手作りのAフレーム小屋「ココヤ。」。私たちは、壮大なロングトレイルへの旅や、自然と調和するシンプルな暮らしの魅力を発信しています。</p>
         </div>
 
         <div class="yt-section">
-            <p>最新の旅の記録</p>
-            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-icon"></a>
+            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-btn">YOUTUBE</a>
         </div>
 
         <div class="gallery">
@@ -100,8 +100,8 @@
 
     <footer>
         <div class="sns-container">
-            <a href="https://www.instagram.com/hiker_naoki/" style="color:#F8F7F0; margin:0 10px;">Instagram</a>
-            <a href="https://www.threads.com/@hiker_naoki?hl=ja" style="color:#F8F7F0; margin:0 10px;">Threads</a>
+            <a href="https://www.instagram.com/hiker_naoki/" class="sns-link">INSTAGRAM</a>
+            <a href="https://www.threads.com/@hiker_naoki?hl=ja" class="sns-link">THREADS</a>
         </div>
     </footer>
 </body>
