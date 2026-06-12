@@ -6,22 +6,51 @@
     <title>ココヤ。| 自然・アウトドア・旅</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 2; }
+        /* 基本設定 */
+        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 1.8; }
 
+        /* ヘッダー・ロゴ */
         .site-header { position: fixed; top: 40px; left: 40px; z-index: 1000; }
         .logo-img { width: 140px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
 
-        .hero-parallax { height: 100vh; background-image: url('フィッツロイ.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hero-text { color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s; }
+        /* メインビジュアル（パララックス演出） */
+        .hero-parallax {
+            height: 100vh;
+            background-image: url('フィッツロイ.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-text {
+            color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s;
+        }
         @keyframes fadeOut { to { opacity: 0; transform: translateY(-30px); } }
 
+        /* コンテンツエリア */
         .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px; }
-        .concept { text-align: center; margin-bottom: 100px; }
         
+        /* 文章の最適化 */
+        .concept { text-align: center; margin-bottom: 80px; }
+        .concept h2 { font-size: 1.8rem; color: #3E4B24; margin-bottom: 30px; }
+        .concept-text { max-width: 600px; margin: 0 auto; }
+        
+        /* YouTubeボタン */
         .yt-section { display: flex; justify-content: center; margin-bottom: 120px; }
-        .yt-btn { display: inline-block; padding: 15px 40px; border: 1px solid #2B2B2B; color: #2B2B2B; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.3em; transition: 0.4s; }
+        .yt-btn {
+            display: inline-block; padding: 15px 40px;
+            border: 1px solid #2B2B2B; color: #2B2B2B;
+            text-decoration: none; font-size: 0.9rem; letter-spacing: 0.3em;
+            transition: all 0.4s ease;
+        }
         .yt-btn:hover { background: #2B2B2B; color: #F8F7F0; }
 
+        /* ギャラリー（3列） */
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 120px; }
         @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } }
         .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
@@ -30,6 +59,7 @@
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
         .item-title { font-size: 1rem; font-weight: 500; margin-top: 20px; }
 
+        /* フッター（洗練されたデザイン） */
         footer { text-align: center; padding: 60px 20px; color: #2B2B2B; border-top: 1px solid #D1CDBC; }
         .sns-icons { margin-bottom: 20px; }
         .sns-icons a { font-size: 1.5rem; color: #2B2B2B; margin: 0 15px; transition: 0.3s; }
@@ -50,7 +80,7 @@
     <div class="container">
         <div class="concept">
             <h2>かえるコヤ、つどうコヤ、ココヤ。</h2>
-            <p style="max-width: 600px; margin: 0 auto;">
+            <p class="concept-text">
                 阿蘇の美しい自然の中に佇む、<br>
                 手作りのAフレーム小屋「ココヤ。」。<br>
                 私たちは壮大なロングトレイルへの旅や、<br>
