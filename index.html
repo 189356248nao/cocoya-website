@@ -132,7 +132,7 @@
             flex-direction: column;
             gap: 120px; 
             max-width: 800px; 
-            margin: 0 auto 60px auto;
+            margin: 0 auto 120px auto; /* closing-messageとの余白を確保するため調整 */
         }
         .story-item {
             display: flex;
@@ -185,6 +185,26 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             border: none;
+        }
+
+        /* 追加：締めの文章（メッセージセクション） */
+        .closing-message {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px 0 20px;
+            letter-spacing: 0.08em;
+        }
+        .closing-message p {
+            font-size: 1.05rem;
+            color: #3A3837;
+            margin-bottom: 3rem;
+            line-height: 2.1;
+        }
+        .closing-message p:last-child {
+            margin-bottom: 0;
+            color: #2E3B17; /* 最後の段落のみ、宿のテーマカラーに少し近づけて印象的に */
+            font-weight: 500;
         }
 
         /* フッター */
@@ -242,10 +262,16 @@
             
             .yt-section { margin-bottom: 80px; }
             
-            .story-list { gap: 80px; }
+            .story-list { gap: 80px; margin-bottom: 80px; }
             .story-body { margin: 20px 0; }
             .item-title { font-size: 1.1rem; }
             .item-desc { font-size: 0.9rem; text-align: left; }
+
+            /* スマホ用：締めの文章調整 */
+            .closing-message { padding: 20px 10px 0 10px; }
+            .closing-message p { font-size: 0.95rem; line-height: 2.0; margin-bottom: 2.5rem; text-align: left; }
+            /* スマホで不自然な改行にならないよう調整 */
+            .closing-message p br { display: inline; } 
         }
     </style>
 </head>
@@ -323,6 +349,29 @@
             </div>
             
         </div>
+
+        <div class="closing-message">
+            <p>
+                長い旅の途中で、何度も立ち止まり、<br>
+                風の匂いや、誰かの優しさに救われてきました。<br>
+                アメリカの大地を歩いた日々も、<br>
+                パタゴニアの空に触れた朝も、<br>
+                阿蘇の水源と空の澄み切った青も、<br>
+                すべてが「足るを知る」という静かな光をくれました。
+            </p>
+            <p>
+                この場所、ココヤ。は、<br>
+                旅の途中で拾った小さな光を、<br>
+                次の誰かへそっと渡すための、ひとつの焚き火です。<br>
+                急がなくていい、飾らなくていい、<br>
+                ただ深呼吸が戻ってくる時間を、ここで灯していきます。
+            </p>
+            <p>
+                これから阿蘇の地に、<br>
+                そんな宿を静かに育てていけたらと思っています。
+            </p>
+        </div>
+
     </div>
 
     <footer>
