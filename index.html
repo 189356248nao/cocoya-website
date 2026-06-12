@@ -4,54 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココヤ。| 自然・アウトドア・旅</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        /* 基本設定 */
-        body { margin: 0; padding: 0; font-family: "Times New Roman", Georgia, "Yu Mincho", serif; background-color: #F8F7F0; color: #2B2B2B; line-height: 1.8; -webkit-text-size-adjust: 100%; }
+        /* 基本設定・タイポグラフィ */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif; 
+            background-color: #F9F8F3; /* クラフト感のあるアースカラー */
+            color: #2C2A29; /* 深みのある炭色 */
+            line-height: 1.9; 
+            -webkit-text-size-adjust: 100%; 
+        }
 
         /* ヘッダー・ロゴ */
-        .site-header { position: fixed; top: 40px; left: 40px; z-index: 1000; }
-        .logo-img { width: 140px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
+        .site-header { 
+            position: fixed; 
+            top: 30px; 
+            left: 40px; 
+            z-index: 1000; 
+        }
+        .logo-img { 
+            width: 120px; 
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); 
+        }
 
-        /* メインビジュアル */
-        .hero-parallax { height: 100vh; background-image: url('フィッツロイ.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hero-text { color: #FFFFFF; font-size: 2.5rem; letter-spacing: 0.4em; text-shadow: 0 4px 15px rgba(0,0,0,0.6); animation: fadeOut 2.5s ease-out forwards; animation-delay: 1.5s; pointer-events: none; }
-        @keyframes fadeOut { to { opacity: 0; transform: translateY(-30px); } }
+        /* メインビジュアル（iPhoneバグ回避） */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero-parallax { 
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('フィッツロイ.jpg'); 
+            background-size: cover; 
+            background-position: center center; 
+            background-attachment: fixed;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .hero-parallax::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0, 0, 0, 0.25);
+        }
+        .hero-text { 
+            position: relative;
+            color: #FFFFFF; 
+            font-size: 2.2rem; 
+            font-weight: 500;
+            letter-spacing: 0.5em; 
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+            animation: fadeOut 2.5s ease-out forwards; 
+            animation-delay: 1.5s; 
+            pointer-events: none; 
+            padding-left: 0.5em; 
+        }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(-20px); } }
 
-        /* コンテンツ */
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-        .concept { text-align: center; margin-bottom: 60px; }
-        .concept h2 { font-size: 1.6rem; color: #3E4B24; margin-bottom: 20px; }
+        /* コンテンツ全体 */
+        .container { max-width: 1200px; margin: 0 auto; padding: 140px 30px; }
         
-        .yt-section { display: flex; justify-content: center; margin-bottom: 80px; }
-        .yt-btn { display: inline-block; padding: 15px 40px; border: 1px solid #2B2B2B; color: #2B2B2B; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.3em; transition: 0.4s; }
-        .yt-btn:hover { background: #2B2B2B; color: #F8F7F0; }
+        /* コンセプトセクション */
+        .concept { text-align: center; margin-bottom: 80px; }
+        .concept h2 { 
+            font-size: 1.8rem; 
+            color: #2E3B17; 
+            margin-bottom: 30px; 
+            letter-spacing: 0.2em;
+            font-weight: 600;
+        }
+        .concept p {
+            max-width: 640px; 
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: #4A4A4A;
+        }
 
-        /* ギャラリー */
-        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 80px; }
-        .gallery-item { display: block; text-decoration: none; color: inherit; transition: 0.4s; }
-        .gallery-item:hover { transform: translateY(-10px); }
-        .image-wrapper { width: 100%; height: 200px; overflow: hidden; background: #EBEA9E; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .item-title { font-size: 0.95rem; font-weight: 500; margin-top: 15px; }
+        /* YouTubeボタン（ソリッド・道具感のあるデザイン） */
+        .yt-section { display: flex; justify-content: center; margin-bottom: 120px; }
+        .yt-btn { 
+            display: inline-flex; 
+            align-items: center;
+            gap: 12px;
+            padding: 16px 50px; 
+            border: 1px solid #2C2A29; 
+            border-radius: 0; /* 直角（ソリッド）に固定 */
+            color: #2C2A29; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-family: sans-serif;
+            letter-spacing: 0.25em; 
+            transition: all 0.4s ease; 
+        }
+        .yt-btn:hover { 
+            background: #2C2A29; 
+            color: #F9F8F3; 
+            letter-spacing: 0.3em; 
+        }
+
+        /* ギャラリー（YouTube埋め込み・レスポンシブ） */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; 
+            margin-bottom: 60px; 
+        }
+        .gallery-item { 
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+        }
+        
+        /* YouTube動画を16:9で美しくレスポンシブ表示するラッパー */
+        .video-wrapper { 
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            position: relative;
+            background: #000;
+            border: 1px solid #DCD9C6; /* 細く有機的なグレーベージュの境界線 */
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .item-title { 
+            font-size: 0.95rem; 
+            font-weight: 600; 
+            margin-top: 18px; 
+            letter-spacing: 0.05em;
+            color: #2C2A29;
+            line-height: 1.5;
+        }
 
         /* フッター */
-        footer { text-align: center; padding: 60px 20px; color: #2B2B2B; background-color: #F8F7F0; border-top: 1px solid #D1CDBC; }
-        .sns-icons { margin-bottom: 20px; display: flex; justify-content: center; gap: 30px; }
-        .sns-icons a { font-size: 1.8rem; color: #2B2B2B; transition: 0.3s; opacity: 0.8; }
-        .sns-icons a:hover { color: #3E4B24; opacity: 1; transform: scale(1.1); }
-        .copyright { font-size: 0.7rem; letter-spacing: 0.1em; opacity: 0.5; }
+        footer { 
+            text-align: center; 
+            padding: 80px 20px; 
+            color: #2C2A29; 
+            background-color: #F3F1E8; 
+            border-top: 1px solid #DCD9C6; /* 細く有機的な境界線に統一 */
+        }
+        .sns-icons { margin-bottom: 30px; display: flex; justify-content: center; gap: 35px; }
+        .sns-icons a { font-size: 1.6rem; color: #2C2A29; transition: 0.3s; opacity: 0.7; }
+        .sns-icons a:hover { color: #2E3B17; opacity: 1; transform: translateY(-3px); }
+        .copyright { font-size: 0.75rem; letter-spacing: 0.15em; opacity: 0.6; font-family: sans-serif; }
 
-        /* モバイル対応 */
+        /* モバイル対応（iPhone最適化） */
         @media (max-width: 768px) {
             .site-header { top: 20px; left: 20px; }
-            .logo-img { width: 100px; }
+            .logo-img { width: 90px; }
+            
             .hero-parallax { background-attachment: scroll; }
-            .hero-text { font-size: 1.5rem; letter-spacing: 0.2em; }
-            .container { padding: 60px 15px; }
-            .gallery { grid-template-columns: 1fr; gap: 40px; }
-            .item-title { font-size: 1.1rem; }
-            .concept p { font-size: 0.95rem; line-height: 1.8; }
+            .hero-text { font-size: 1.4rem; letter-spacing: 0.3em; }
+            
+            .container { padding: 80px 20px; }
+            .concept { margin-bottom: 50px; }
+            .concept h2 { font-size: 1.4rem; line-height: 1.5; }
+            .concept p { font-size: 0.95rem; text-align: left; }
+            
+            .yt-section { margin-bottom: 80px; }
+            /* スマホ時は縦並びにして動画を見やすく */
+            .gallery { grid-template-columns: 1fr; gap: 50px; }
+            .item-title { font-size: 1.05rem; margin-top: 14px; }
         }
     </style>
 </head>
@@ -61,14 +187,16 @@
         <img src="ココヤロゴ.png" alt="ココヤ。" class="logo-img">
     </header>
 
-    <div class="hero-parallax">
-        <div class="hero-text">旅が人生を作る</div>
+    <div class="hero-container">
+        <div class="hero-parallax">
+            <div class="hero-text">旅が人生を作る</div>
+        </div>
     </div>
 
     <div class="container">
         <div class="concept">
             <h2>かえるコヤ、つどうコヤ、ココヤ。</h2>
-            <p style="max-width: 600px; margin: 0 auto;">
+            <p>
                 阿蘇の美しい自然の中に佇む、<br>
                 手作りのAフレーム小屋「ココヤ。」。<br>
                 私たちは壮大なロングトレイルへの旅や、<br>
@@ -77,29 +205,39 @@
         </div>
 
         <div class="yt-section">
-            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-btn">YOUTUBE CHANNEL</a>
+            <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-btn">
+                YOUTUBE CHANNEL <i class="fa-brands fa-youtube" style="color: #c94a4a;"></i>
+            </a>
         </div>
 
         <div class="gallery">
-            <a href="https://www.youtube.com/watch?v=IcW8AVSCxs0&t=1s" target="_blank" class="gallery-item">
-                <div class="image-wrapper"><img src="PCTロゴ.jpg" alt="PCT"></div>
+            <div class="gallery-item">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/IcW8AVSCxs0" title="アメリカ縦断 4,265km の旅" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 <div class="item-title">アメリカ縦断 4,265km の旅</div>
-            </a>
-            <a href="https://www.youtube.com/watch?v=c-nClJFv5ww" target="_blank" class="gallery-item">
-                <div class="image-wrapper"><img src="小屋建築.jpg" alt="小屋"></div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/c-nClJFv5ww" title="南阿蘇でAフレームの小屋作り" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 <div class="item-title">南阿蘇でAフレームの小屋作り</div>
-            </a>
-            <a href="https://www.youtube.com/watch?v=hJyhrh0phZw" target="_blank" class="gallery-item">
-                <div class="image-wrapper"><img src="paine.jpg" alt="パタゴニア"></div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/hJyhrh0phZw" title="パタゴニアの壮大な旅路" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 <div class="item-title">パタゴニアの壮大な旅路</div>
-            </a>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="sns-icons">
             <a href="https://www.instagram.com/hiker_naoki/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.threads.com/@hiker_naoki?hl=ja" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://www.threads.com/@hiker_naoki?hl=ja" target="_blank" aria-label="Threads"><i class="fa-brands fa-square-threads"></i></a>
         </div>
         <div class="copyright">&copy; 2026 ココヤ。 All Rights Reserved.</div>
     </footer>
