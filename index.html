@@ -65,15 +65,20 @@
             gap: 20px;
             justify-content: center;
         }
+
+        /* ギャラリーアイテムのリンク全体にスタイルを適用 */
         .gallery-item {
+            display: block; /* 枠全体をクリック可能にする */
+            text-decoration: none; /* 下線を消す */
             background: #fff;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         .gallery-item:hover {
-            transform: translateY(-3px); /* ホバー時に少し浮かす */
+            transform: translateY(-5px); /* ホバー時に少し浮かす */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* ホバー時の影を少し強く */
         }
         .gallery-item img {
             width: 100%;
@@ -115,20 +120,20 @@
         </div>
 
         <div class="gallery">
-            <div class="gallery-item">
+            <a href="https://www.youtube.com/watch?v=IcW8AVSCxs0&t=1s" target="_blank" rel="noopener noreferrer" class="gallery-item">
                 <img src="PCTロゴ.jpg" alt="PCTロゴ">
                 <p>アメリカ縦断4,265KMの旅</p>
-            </div>
+            </a>
             
-            <div class="gallery-item">
+            <a href="https://www.youtube.com/watch?v=c-nClJFv5ww" target="_blank" rel="noopener noreferrer" class="gallery-item">
                 <img src="小屋建築.jpg" alt="手作りのAフレーム小屋">
                 <p>南阿蘇でAフレームの小屋作り</p>
-            </div>
+            </a>
             
-            <div class="gallery-item">
+            <a href="https://www.youtube.com/watch?v=hJyhrh0phZw" target="_blank" rel="noopener noreferrer" class="gallery-item">
                 <img src="paine.jpg" alt="パタゴニアの風景">
                 <p>パタゴニアの壮大な旅路</p>
-            </div>
+            </a>
         </div>
     </div>
 
