@@ -11,8 +11,8 @@
             margin: 0; 
             padding: 0; 
             font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif; 
-            background-color: #F9F8F3; /* クラフト感のあるアースカラー */
-            color: #2C2A29; /* 深みのある炭色 */
+            background-color: #F9F8F3; 
+            color: #2C2A29; 
             line-height: 1.9; 
             -webkit-text-size-adjust: 100%; 
         }
@@ -138,8 +138,6 @@
             flex-direction: column;
             background: transparent;
         }
-        
-        /* 画像エリア */
         .image-wrapper { 
             width: 100%; 
             aspect-ratio: 16 / 9; 
@@ -152,8 +150,6 @@
             height: 100%; 
             object-fit: cover; 
         }
-        
-        /* テキストエリア */
         .story-body {
             margin: 25px 0;
         }
@@ -171,8 +167,6 @@
             line-height: 1.8;
             margin: 0;
         }
-        
-        /* YouTube動画エリア */
         .video-wrapper { 
             width: 100%; 
             aspect-ratio: 16 / 9; 
@@ -206,7 +200,7 @@
         .album-card { 
             text-decoration: none; 
             color: #2C2A29; 
-            cursor: pointer;
+            display: block;
         }
         .album-img { 
             aspect-ratio: 1 / 1; 
@@ -222,7 +216,6 @@
             object-fit: cover; 
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        /* 写真ホバー時の極上エフェクト */
         .album-card:hover .album-img img { 
             transform: scale(1.06); 
         }
@@ -238,61 +231,7 @@
             color: #2E3B17;
         }
 
-        /* 高画質ビューアー（ライトボックスモーダル）のスタイル */
-        .photo-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(15, 14, 13, 0.95);
-            z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .photo-modal.is-active {
-            display: flex;
-            opacity: 1;
-        }
-        .modal-content {
-            max-width: 85%;
-            max-height: 75vh;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            transform: scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .photo-modal.is-active .modal-content {
-            transform: scale(1);
-        }
-        .modal-content img {
-            max-width: 100%;
-            max-height: 75vh;
-            object-fit: contain;
-            display: block;
-        }
-        .modal-caption {
-            color: #F9F8F3;
-            margin-top: 20px;
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            text-align: center;
-        }
-        .modal-close {
-            position: absolute;
-            top: 30px; right: 40px;
-            color: #F9F8F3;
-            font-size: 2rem;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        .modal-close:hover {
-            opacity: 1;
-        }
-
-        /* 締めの文章（メッセージセクション） */
+        /* 締めのメッセージセクション */
         .closing-message {
             max-width: 700px;
             margin: 0 auto;
@@ -303,13 +242,8 @@
         .closing-message p {
             font-size: 1.05rem;
             color: #3A3837;
-            margin-bottom: 3rem;
-            line-height: 2.1;
-        }
-        .closing-message p:last-child {
             margin-bottom: 0;
-            color: #2E3B17; 
-            font-weight: 500;
+            line-height: 2.1;
         }
 
         /* フッター */
@@ -325,65 +259,33 @@
         .sns-icons a:hover { color: #2E3B17; opacity: 1; transform: translateY(-3px); }
         .copyright { font-size: 0.75rem; letter-spacing: 0.15em; opacity: 0.6; font-family: sans-serif; }
 
-        /* デスクトップ環境（PC）のみにパララックスを適用 */
         @media (min-width: 769px) {
-            .hero-parallax {
-                background-attachment: fixed; 
-            }
+            .hero-parallax { background-attachment: fixed; }
         }
 
-        /* モバイル対応（iPhone最適化） */
         @media (max-width: 768px) {
             .site-header { top: 20px; left: 20px; }
             .header-link { flex-direction: column; align-items: flex-start; gap: 6px; }
             .logo-img { width: 90px; }
             .header-title { font-size: 0.75rem; letter-spacing: 0.05em; }
-            
             .hero-text { font-size: 1.4rem; letter-spacing: 0.3em; }
-            
             .container { padding: 60px 20px; }
             .concept { margin-bottom: 50px; }
-            
-            /* キャッチコピーを絶対に1行で美しく収める設定 */
-            .concept h2 { 
-                font-size: 4.3vw;          
-                letter-spacing: 0.04em;    
-                white-space: nowrap;       
-                line-height: 1.2; 
-                margin-bottom: 20px;
-            }
-            
-            @media (max-width: 360px) {
-                .concept h2 { font-size: 14px; }
-            }
-            
-            .concept p { 
-                font-size: 0.9rem; 
-                text-align: center; 
-                line-height: 1.7;
-            }
+            .concept h2 { font-size: 4.3vw; letter-spacing: 0.04em; white-space: nowrap; line-height: 1.2; margin-bottom: 20px; }
+            @media (max-width: 360px) { .concept h2 { font-size: 14px; } }
+            .concept p { font-size: 0.9rem; text-align: center; line-height: 1.7; }
             .concept p br { display: none; } 
-            
             .yt-section { margin-bottom: 80px; }
-            
             .story-list { gap: 80px; margin-bottom: 80px; }
             .story-body { margin: 20px 0; }
             .item-title { font-size: 1.1rem; }
             .item-desc { font-size: 0.9rem; text-align: left; }
-
-            /* 写真ギャラリーのスマホレイアウト最適化 */
             .photo-album-section { margin-bottom: 80px; }
             .photo-album-section h2 { font-size: 1.3rem; margin-bottom: 35px; }
             .album-links { grid-template-columns: 1fr; gap: 40px; max-width: 450px; margin: 0 auto; }
             .album-card p { font-size: 0.85rem; }
-
-            /* モーダル表示のスマホ調整 */
-            .modal-content { max-width: 95%; }
-            .modal-close { top: 20px; right: 20px; font-size: 1.8rem; }
-
-            /* スマホ用：締めの文章調整 */
             .closing-message { padding: 20px 10px 0 10px; }
-            .closing-message p { font-size: 0.95rem; line-height: 2.0; margin-bottom: 2.5rem; text-align: left; }
+            .closing-message p { font-size: 0.95rem; line-height: 2.0; text-align: left; }
             .closing-message p br { display: inline; } 
         }
     </style>
@@ -391,7 +293,7 @@
 <body>
 
     <header class="site-header">
-        <a href="#" class="header-link">
+        <a href="index.html" class="header-link">
             <img src="ココヤロゴ.png" alt="ココヤ。" class="logo-img">
             <h1 class="header-title">ココヤ。| 旅と自然</h1>
         </a>
@@ -421,7 +323,6 @@
         </div>
 
         <div class="story-list">
-            
             <div class="story-item">
                 <div class="image-wrapper"><img src="PCTロゴ.jpg" alt="PCT"></div>
                 <div class="story-body">
@@ -460,24 +361,24 @@
                     <iframe src="https://www.youtube.com/embed/hJyhrh0phZw" title="パタゴニアの壮大な旅路" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
-            
         </div>
 
         <div class="photo-album-section">
             <h2>PHOTO ALBUM</h2>
             <div class="album-links">
-                <div class="album-card" data-highres="PCTロゴ.jpg" data-caption="PCT 2026 ── アメリカ縦断の記憶">
+                <!-- 個別のHTMLファイルへリンクします -->
+                <a href="pct-photo.html" class="album-card">
                     <div class="album-img"><img src="PCTロゴ.jpg" alt="PCT写真集"></div>
-                    <p>PCT 2026</p>
-                </div>
-                <div class="album-card" data-highres="小屋建築.jpg" data-caption="ASO LIFE ── 南阿蘇でのシンプルな暮らしとセルフビルド">
+                    <p>PCT2023</p>
+                </a>
+                <a href="aso-photo.html" class="album-card">
                     <div class="album-img"><img src="小屋建築.jpg" alt="小屋写真集"></div>
-                    <p>ASO LIFE</p>
-                </div>
-                <div class="album-card" data-highres="paine.jpg" data-caption="PATAGONIA ── パタゴニアの最果て、原始の鼓動">
+                    <p>Self build cocoya.2021</p>
+                </a>
+                <a href="patagonia-photo.html" class="album-card">
                     <div class="album-img"><img src="paine.jpg" alt="パタゴニア写真集"></div>
-                    <p>PATAGONIA</p>
-                </div>
+                    <p>PATAGONIA2025</p>
+                </a>
             </div>
         </div>
 
@@ -490,27 +391,8 @@
                 阿蘇の水源と空の澄み切った青も、<br>
                 すべてが「足るを知る」という静かな光をくれました。
             </p>
-            <p>
-                この場所、ココヤ。は、<br>
-                旅の途中で拾った小さな光を、<br>
-                次の誰かへそっと渡すための、ひとつの焚き火です。<br>
-                急がなくていい、飾らなくていい、<br>
-                ただ深呼吸が戻ってくる時間を、ここで灯していきます。
-            </p>
-            <p>
-                これから阿蘇の地に、<br>
-                そんな宿を静かに育てていけたらと思っています。
-            </p>
         </div>
 
-    </div>
-
-    <div class="photo-modal" id="photoModal">
-        <span class="modal-close" id="modalClose">&times;</span>
-        <div class="modal-content">
-            <img src="" id="modalImage" alt="高画質写真">
-        </div>
-        <div class="modal-caption" id="modalCaption"></div>
     </div>
 
     <footer>
@@ -522,49 +404,12 @@
     </footer>
 
     <script>
-        // 1. スクロール時にメインビジュアルのテキストをフェードアウトさせる処理
         window.addEventListener('scroll', function() {
             const heroText = document.querySelector('.hero-text');
             if (heroText) {
                 const scrollPosition = window.scrollY;
                 const opacity = Math.max(0, 1 - scrollPosition / 300);
                 heroText.style.opacity = opacity;
-            }
-        });
-
-        // 2. 高画質写真アルバム用：ライトボックス（モーダル表示）処理
-        const albumCards = document.querySelectorAll('.album-card');
-        const photoModal = document.getElementById('photoModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
-        const modalClose = document.getElementById('modalClose');
-
-        albumCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const highResUrl = this.getAttribute('data-highres');
-                const captionText = this.getAttribute('data-caption');
-                
-                modalImage.setAttribute('src', highResUrl);
-                modalCaption.textContent = captionText;
-                
-                photoModal.classList.add('is-active');
-                document.body.style.overflow = 'hidden'; // 背面のスクロールを固定
-            });
-        });
-
-        // モーダルを閉じる処理（バツボタン、または背景クリック）
-        function closeModal() {
-            photoModal.classList.remove('is-active');
-            document.body.style.overflow = ''; // スクロール固定を解除
-            setTimeout(() => {
-                modalImage.setAttribute('src', ''); // 画像のクリア
-            }, 400);
-        }
-
-        modalClose.addEventListener('click', closeModal);
-        photoModal.addEventListener('click', function(e) {
-            if (e.target === photoModal) {
-                closeModal();
             }
         });
     </script>
