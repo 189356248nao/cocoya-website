@@ -15,6 +15,13 @@
             color: #2C2A29; 
             line-height: 1.9; 
             -webkit-text-size-adjust: 100%; 
+            /* ページ遷移をシームレスにするフェードイン効果を追加 */
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* ヘッダー・ロゴ・タイトルリンク */
@@ -69,7 +76,7 @@
         .hero-parallax::before {
             content: '';
             position: absolute;
-            top:0; left:0; width:100%; height:100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.25);
         }
         .hero-text { 
@@ -337,7 +344,7 @@
             </div>
             
             <div class="story-item">
-                <div class="image-wrapper"><img src="小屋建築.jpg" alt="小屋"></div>
+                <div class="image-wrapper"><img src="cocoyawaku.jpg" alt="南阿蘇でAフレームの小屋作り"></div>
                 <div class="story-body">
                     <h3 class="item-title">南阿蘇でAフレームの小屋作り</h3>
                     <p class="item-desc">
@@ -371,7 +378,7 @@
                     <p>PCT2023</p>
                 </a>
                 <a href="cocoya-2021.html" class="album-card">
-                    <div class="album-img"><img src="小屋建築.jpg" alt="小屋写真集"></div>
+                    <div class="album-img"><img src="cocoyawaku.jpg" alt="小屋写真集"></div>
                     <p>cocoya.2021</p>
                 </a>
                 <a href="patagonia-photo.html" class="album-card">
