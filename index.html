@@ -6,16 +6,20 @@
     <title>ココヤ。| 旅と自然</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        /* 基本設定・タイポグラフィ */
+        /* =========================================
+           基本設定・タイポグラフィ（引き算の配色）
+        ========================================= */
         body { 
             margin: 0; 
             padding: 0; 
+            /* 少し情緒のある明朝体をベースにしつつ、洗練された印象に */
             font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif; 
-            background-color: #F9F8F3; 
-            color: #2C2A29; 
-            line-height: 1.9; 
+            background-color: #FFFFFF; /* 純白にして写真を際立たせる */
+            color: #333333; /* 真っ黒を避けた上品なダークグレー */
+            line-height: 2.0; /* 行間を広めにとる */
+            letter-spacing: 0.05em;
             -webkit-text-size-adjust: 100%; 
-            animation: fadeIn 0.8s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -23,11 +27,13 @@
             to { opacity: 1; }
         }
 
-        /* ヘッダー・ロゴ・タイトルリンク */
+        /* =========================================
+           ヘッダー・ロゴ
+        ========================================= */
         .site-header { 
             position: absolute; 
-            top: 30px; 
-            left: 40px; 
+            top: 40px; 
+            left: 50px; 
             z-index: 1000; 
         }
         .header-link {
@@ -38,23 +44,26 @@
             transition: opacity 0.3s ease;
         }
         .header-link:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
         .logo-img { 
-            width: 120px; 
+            width: 100px; 
             height: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); 
+            /* ロゴが写真に埋もれない程度の控えめなシャドウ */
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3)); 
         }
         .header-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #FFFFFF; 
-            letter-spacing: 0.08em;
+            letter-spacing: 0.15em;
             font-weight: 500;
             margin: 0;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
 
-        /* メインビジュアル */
+        /* =========================================
+           メインビジュアル（写真を主役に）
+        ========================================= */
         .hero-container {
             position: relative;
             width: 100%;
@@ -72,114 +81,126 @@
             align-items: center; 
             justify-content: center; 
         }
+        /* 写真を引き立たせるためのオーバーレイ */
         .hero-parallax::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.15);
         }
         .hero-text { 
             position: relative;
             color: #FFFFFF; 
-            font-size: 2.2rem; 
-            font-weight: 500;
-            letter-spacing: 0.5em; 
-            text-shadow: 0 4px 20px rgba(0,0,0,0.4); 
+            font-size: 2.4rem; 
+            font-weight: 400;
+            letter-spacing: 0.4em; 
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3); 
             pointer-events: none; 
-            padding-left: 0.5em; 
+            padding-left: 0.4em; 
             will-change: opacity; 
         }
 
-        /* コンテンツ全体 */
-        .container { max-width: 1200px; margin: 0 auto; padding: 140px 30px; }
+        /* =========================================
+           全体コンテナ（大胆な余白）
+        ========================================= */
+        .container { 
+            max-width: 1000px; /* 少し幅を絞って左右の余白を強調 */
+            margin: 0 auto; 
+            padding: 160px 40px; 
+        }
         
         /* コンセプトセクション */
-        .concept { text-align: center; margin-bottom: 80px; }
+        .concept { 
+            text-align: center; 
+            margin-bottom: 120px; 
+        }
         .concept h2 { 
-            font-size: 1.8rem; 
-            color: #2E3B17; 
-            margin-bottom: 30px; 
+            font-size: 1.6rem; 
+            color: #222222; 
+            margin-bottom: 40px; 
             letter-spacing: 0.2em;
-            font-weight: 600;
+            font-weight: 500;
         }
         .concept p {
-            max-width: 640px; 
+            max-width: 600px; 
             margin: 0 auto;
             font-size: 1.05rem;
             color: #4A4A4A;
         }
 
-        /* YouTubeボタン */
-        .yt-section { display: flex; justify-content: center; margin-bottom: 120px; }
+        /* YouTubeボタン（モノトーンでシンプルに） */
+        .yt-section { 
+            display: flex; 
+            justify-content: center; 
+            margin-bottom: 160px; 
+        }
         .yt-btn { 
             display: inline-flex; 
             align-items: center;
-            gap: 12px;
-            padding: 16px 50px; 
-            border: 1px solid #2C2A29; 
-            border-radius: 0; 
-            color: #2C2A29; 
+            gap: 15px;
+            padding: 18px 60px; 
+            border: 1px solid #333333; 
+            background: transparent;
+            color: #333333; 
             text-decoration: none; 
             font-size: 0.85rem; 
-            font-family: sans-serif;
-            letter-spacing: 0.25em; 
+            font-family: "Helvetica Neue", Arial, sans-serif; /* 英字はゴシックでスッキリと */
+            letter-spacing: 0.2em; 
             transition: all 0.4s ease; 
         }
         .yt-btn:hover { 
-            background: #2C2A29; 
-            color: #F9F8F3; 
-            letter-spacing: 0.3em; 
+            background: #333333; 
+            color: #FFFFFF; 
+            letter-spacing: 0.25em; 
         }
 
-        /* ストーリーセクション */
+        /* =========================================
+           ストーリーセクション（Z型レイアウト）
+        ========================================= */
         .story-list {
             display: flex;
             flex-direction: column;
-            gap: 120px; 
-            max-width: 800px; 
-            margin: 0 auto 120px auto; 
+            gap: 160px; /* セクション間の余白を大胆に */
+            margin-bottom: 160px; 
         }
         .story-item {
             display: flex;
-            flex-direction: column;
-            background: transparent;
+            align-items: center;
+            gap: 80px; /* 写真とテキストの間の余白 */
         }
+        /* 偶数番目は左右反転（Z型視線誘導） */
+        .story-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .story-media {
+            flex: 1.2; /* 写真側の比率を少し大きく */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .story-body {
+            flex: 1;
+        }
+
+        /* 枠線を排除し、写真そのものの美しさを活かす */
         .image-wrapper { 
             width: 100%; 
             aspect-ratio: 16 / 9; 
             overflow: hidden; 
-            background: #EBEA9E; 
-            border: 1px solid #DCD9C6; 
+            background: #FAFAFA; 
         }
         .image-wrapper img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center 30%; /* 基本は上寄りに設定 */
-        }
-        .story-body {
-            margin: 25px 0;
-        }
-        .item-title { 
-            font-size: 1.2rem; 
-            font-weight: 600; 
-            margin: 0 0 12px 0;
-            letter-spacing: 0.05em;
-            color: #2C2A29;
-            line-height: 1.4;
-        }
-        .item-desc { 
-            font-size: 0.95rem;
-            color: #555555;
-            line-height: 1.8;
-            margin: 0;
+            object-position: center; 
         }
         .video-wrapper { 
             width: 100%; 
             aspect-ratio: 16 / 9; 
             position: relative;
-            background: #000;
-            border: 1px solid #DCD9C6; 
+            background: #FAFAFA;
         }
         .video-wrapper iframe {
             position: absolute;
@@ -187,112 +208,143 @@
             border: none;
         }
 
-        /* 写真集（PHOTO ALBUM）セクション */
+        .item-title { 
+            font-size: 1.3rem; 
+            font-weight: 500; 
+            margin: 0 0 20px 0;
+            letter-spacing: 0.1em;
+            color: #222222;
+        }
+        .item-desc { 
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 2.0;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* =========================================
+           写真集セクション（枠なしグリッド）
+        ========================================= */
         .photo-album-section { 
-            margin-bottom: 120px; 
+            margin-bottom: 160px; 
         }
         .photo-album-section h2 {
             text-align: center; 
-            margin-bottom: 50px; 
-            font-size: 1.6rem;
+            margin-bottom: 60px; 
+            font-size: 1.4rem;
             font-weight: 500; 
-            letter-spacing: 0.15em;
-            color: #2E3B17;
+            letter-spacing: 0.2em;
+            color: #222222;
         }
         .album-links { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
-            gap: 30px; 
+            gap: 40px; 
         }
         .album-card { 
             text-decoration: none; 
-            color: #2C2A29; 
+            color: #333333; 
             display: block;
         }
         .album-img { 
             aspect-ratio: 1 / 1; 
             overflow: hidden; 
-            background: #EBEA9E; 
-            margin-bottom: 15px; 
-            border: 1px solid #DCD9C6; 
+            margin-bottom: 20px; 
             position: relative;
         }
         .album-img img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
         }
+        /* ホバー時は少しだけズームし、ほんのり暗くする上品な演出 */
         .album-card:hover .album-img img { 
-            transform: scale(1.06); 
+            transform: scale(1.04); 
+            filter: brightness(0.9);
         }
         .album-card p { 
             text-align: center; 
-            font-size: 0.9rem; 
-            letter-spacing: 0.12em; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.15em; 
             margin: 0;
-            font-weight: 500;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            color: #666666;
             transition: color 0.3s ease;
         }
         .album-card:hover p {
-            color: #2E3B17;
+            color: #111111;
         }
 
-        /* 締めのメッセージセクション */
+        /* =========================================
+           締めのメッセージ（言葉の引き立たせ方）
+        ========================================= */
         .closing-message {
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
-            padding: 40px 20px 0 20px;
-            letter-spacing: 0.08em;
+            padding: 80px 20px;
+            letter-spacing: 0.1em;
+            border-top: 1px solid #EEEEEE; /* さりげない区切り線 */
         }
         .closing-message p {
             font-size: 1.05rem;
-            color: #3A3837;
+            color: #444444;
             margin-bottom: 0;
-            line-height: 2.1;
+            line-height: 2.4; /* 言葉をゆっくり読ませるために行間をさらに広く */
         }
 
-        /* フッター */
+        /* =========================================
+           フッター
+        ========================================= */
         footer { 
             text-align: center; 
-            padding: 80px 20px; 
-            color: #2C2A29; 
-            background-color: #F3F1E8; 
-            border-top: 1px solid #DCD9C6; 
+            padding: 100px 20px 80px; 
+            color: #333333; 
+            background-color: #FAFAFA; /* ほんの少しだけグレーにして画面端を認識させる */
         }
-        .sns-icons { margin-bottom: 30px; display: flex; justify-content: center; gap: 35px; }
-        .sns-icons a { font-size: 1.6rem; color: #2C2A29; transition: 0.3s; opacity: 0.7; }
-        .sns-icons a:hover { color: #2E3B17; opacity: 1; transform: translateY(-3px); }
-        .copyright { font-size: 0.75rem; letter-spacing: 0.15em; opacity: 0.6; font-family: sans-serif; }
+        .sns-icons { margin-bottom: 40px; display: flex; justify-content: center; gap: 40px; }
+        .sns-icons a { font-size: 1.4rem; color: #333333; transition: 0.3s; opacity: 0.6; }
+        .sns-icons a:hover { opacity: 1; transform: translateY(-3px); }
+        .copyright { font-size: 0.7rem; letter-spacing: 0.2em; opacity: 0.5; font-family: sans-serif; }
 
+        /* =========================================
+           レスポンシブ（スマホ対応）
+        ========================================= */
         @media (min-width: 769px) {
             .hero-parallax { background-attachment: fixed; }
         }
 
         @media (max-width: 768px) {
-            .site-header { top: 20px; left: 20px; }
-            .header-link { flex-direction: column; align-items: flex-start; gap: 6px; }
-            .logo-img { width: 90px; }
-            .header-title { font-size: 0.75rem; letter-spacing: 0.05em; }
-            .hero-text { font-size: 1.4rem; letter-spacing: 0.3em; }
-            .container { padding: 60px 20px; }
-            .concept { margin-bottom: 50px; }
-            .concept h2 { font-size: 4.3vw; letter-spacing: 0.04em; white-space: nowrap; line-height: 1.2; margin-bottom: 20px; }
-            @media (max-width: 360px) { .concept h2 { font-size: 14px; } }
-            .concept p { font-size: 0.9rem; text-align: center; line-height: 1.7; }
+            .site-header { top: 25px; left: 25px; }
+            .header-link { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .logo-img { width: 80px; }
+            .header-title { font-size: 0.75rem; letter-spacing: 0.1em; }
+            .hero-text { font-size: 1.6rem; letter-spacing: 0.3em; }
+            
+            .container { padding: 100px 25px; }
+            .concept { margin-bottom: 80px; }
+            .concept h2 { font-size: 1.2rem; margin-bottom: 30px; line-height: 1.5; }
+            .concept p { font-size: 0.95rem; text-align: left; }
             .concept p br { display: none; } 
-            .yt-section { margin-bottom: 80px; }
-            .story-list { gap: 80px; margin-bottom: 80px; }
-            .story-body { margin: 20px 0; }
-            .item-title { font-size: 1.1rem; }
-            .item-desc { font-size: 0.9rem; text-align: left; }
-            .photo-album-section { margin-bottom: 80px; }
-            .photo-album-section h2 { font-size: 1.3rem; margin-bottom: 35px; }
-            .album-links { grid-template-columns: 1fr; gap: 40px; max-width: 450px; margin: 0 auto; }
-            .album-card p { font-size: 0.85rem; }
-            .closing-message { padding: 20px 10px 0 10px; }
-            .closing-message p { font-size: 0.95rem; line-height: 2.0; text-align: left; }
+            
+            .yt-section { margin-bottom: 100px; }
+            
+            /* スマホでは縦並びに戻す */
+            .story-list { gap: 120px; margin-bottom: 100px; }
+            .story-item, .story-item:nth-child(even) { flex-direction: column; gap: 30px; align-items: flex-start; }
+            .story-body { padding: 0; }
+            .item-title { font-size: 1.2rem; }
+            .item-desc { font-size: 0.95rem; }
+            
+            .photo-album-section { margin-bottom: 120px; }
+            .photo-album-section h2 { font-size: 1.2rem; margin-bottom: 40px; }
+            .album-links { grid-template-columns: 1fr; gap: 60px; max-width: 400px; margin: 0 auto; }
+            .album-card p { font-size: 0.9rem; }
+            
+            .closing-message { padding: 60px 10px; }
+            .closing-message p { font-size: 0.95rem; line-height: 2.2; text-align: left; }
             .closing-message p br { display: inline; } 
         }
     </style>
@@ -325,47 +377,53 @@
 
         <div class="yt-section">
             <a href="https://www.youtube.com/@cocoya-japan" target="_blank" class="yt-btn">
-                YOUTUBE CHANNEL <i class="fa-brands fa-youtube" style="color: #c94a4a;"></i>
+                YOUTUBE CHANNEL <i class="fa-brands fa-youtube"></i>
             </a>
         </div>
 
         <div class="story-list">
             <div class="story-item">
-                <div class="image-wrapper"><img src="PCTロゴ.jpg" alt="PCT"></div>
+                <div class="story-media">
+                    <div class="image-wrapper"><img src="PCTロゴ.jpg" alt="PCT"></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/IcW8AVSCxs0" title="アメリカ縦断 4,265km の旅" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
                 <div class="story-body">
                     <h3 class="item-title">アメリカ縦断 4,265km の旅</h3>
                     <p class="item-desc">
                         メキシコ国境からカナダ国境まで、アメリカ西海岸を南北に貫く壮大なロングトレイル「PCT」。果てしなく続く砂漠、険しい岩峰、精度高く輝く美しい大自然を歩き通した、半年に及ぶ過酷で豊かな旅の記録です。
                     </p>
                 </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/IcW8AVSCxs0" title="アメリカ縦断 4,265km の旅" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
             </div>
             
             <div class="story-item">
-                <div class="image-wrapper"><img src="cocoyawaku.jpeg" alt="南阿蘇でAフレームの小屋作り" style="object-position: center 80%;"></div>
+                <div class="story-media">
+                    <div class="image-wrapper"><img src="cocoyawaku.jpeg" alt="南阿蘇でAフレームの小屋作り"></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/c-nClJFv5ww" title="南阿蘇でAフレームの小屋作り" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
                 <div class="story-body">
                     <h3 class="item-title">南阿蘇でAフレームの小屋作り</h3>
                     <p class="item-desc">
                         南阿蘇の圧倒的なロケーションの中に、自分たちの手でゼロからAフレーム小屋を建てるセルフビルドプロジェクト。自然と調和し、人々が集うシンプルな暮らしの拠点「ココヤ。」が形になっていく過程をお届けします。
                     </p>
                 </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/c-nClJFv5ww" title="南阿蘇でAフレームの小屋作り" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
             </div>
             
             <div class="story-item">
-                <div class="image-wrapper"><img src="paine.jpg" alt="パタゴニア"></div>
+                <div class="story-media">
+                    <div class="image-wrapper"><img src="paine.jpg" alt="パタゴニア"></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/hJyhrh0phZw" title="パタゴニアの壮大な旅路" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
                 <div class="story-body">
                     <h3 class="item-title">パタゴニアの壮大な旅路</h3>
                     <p class="item-desc">
                         最果ての地、南米パタゴニアの大地へ。猛烈な嵐、突き刺さるような岩峰、精度高く輝く巨大な氷河。地球の原始的な鼓動をダイレクトに肌で感じる、ハイカー憧れの聖地を巡る旅の記録です。
                     </p>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/hJyhrh0phZw" title="パタゴニアの壮大な旅路" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -375,15 +433,15 @@
             <div class="album-links">
                 <a href="pct-photo.html" class="album-card">
                     <div class="album-img"><img src="PCTロゴ.jpg" alt="PCT写真集"></div>
-                    <p>PCT2023</p>
+                    <p>PCT 2023</p>
                 </a>
                 <a href="cocoya-2021.html" class="album-card">
                     <div class="album-img"><img src="cocoya3p.jpeg" alt="小屋写真集"></div>
-                    <p>cocoya.2021</p>
+                    <p>COCOYA. 2021</p>
                 </a>
                 <a href="patagonia-photo.html" class="album-card">
                     <div class="album-img"><img src="paine.jpg" alt="パタゴニア写真集"></div>
-                    <p>PATAGONIA2025</p>
+                    <p>PATAGONIA 2025</p>
                 </a>
             </div>
         </div>
