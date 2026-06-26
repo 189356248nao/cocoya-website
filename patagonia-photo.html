@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATAGONIA2025 | ココヤ。</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* 基本設定 */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif; 
+            background-color: #F9F8F3; /* ブランドカラーを維持 */
+            color: #2C2A29; 
+            -webkit-text-size-adjust: 100%; 
+        }
+
+        /* 戻るボタン（左上固定） */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 40px;
+            z-index: 1000;
+            text-decoration: none;
+            color: #2C2A29;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: opacity 0.3s ease;
+            background: rgba(249, 248, 243, 0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        .back-button:hover {
+            opacity: 0.6;
+        }
+
+        /* 写真集ヘッダー */
+        .album-header {
+            text-align: center;
+            padding: 120px 20px 80px 20px;
+        }
+        .album-title {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            color: #2E3B17;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        /* ギャラリー（写真の画質・迫力重視のワイドレイアウト） */
+        .gallery-container {
+            max-width: 1400px; /* 大画面でも写真が大きく表示されるよう広く設定 */
+            margin: 0 auto;
+            padding: 0 40px 140px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* 写真と写真の間隔をゆったりと取る */
+        }
+        .gallery-item {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08); /* 写真が浮かび上がるような上品な影 */
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            .back-button { top: 20px; left: 20px; padding: 6px 12px; font-size: 0.8rem; }
+            .album-header { padding: 100px 20px 50px 20px; }
+            .album-title { font-size: 1.5rem; letter-spacing: 0.15em; }
+            .gallery-container { padding: 0 20px 80px 20px; gap: 40px; }
+            .gallery-item img { box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> BACK
+    </a>
+
+    <header class="album-header">
+        <h1 class="album-title">PATAGONIA2025</h1>
+    </header>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="paine.jpg" alt="パイネ国立公園">
+        </div>
+        <div class="gallery-item">
+            <img src="patagonia1.jpeg" alt="パタゴニアの風景1">
+        </div>
+        <div class="gallery-item">
+            <img src="patagonia2.jpeg" alt="パタゴニアの風景2">
+        </div>
+    </div>
+
+</body>
+</html>
